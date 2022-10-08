@@ -25,7 +25,8 @@ class LibroController extends Controller
    */
   public function create()
   {
-    return view('libros.form');
+    $libro = new Libro();
+    return view('libros.form', compact('libro'));
   }
 
   /**

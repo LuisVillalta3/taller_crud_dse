@@ -103,11 +103,20 @@
                                 <td class="p-2 border-r">{{ $libro->edicion }}</td>
                                 <td class="p-2 border-r">{{ $libro->anio }}</td>
                                 <td class="p-2 border-r">{{ $libro->idioma }}</td>
-                                <td>
-                                    <a href="#"
-                                        class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Editar</a>
-                                    <a href="#"
-                                        class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Borrar</a>
+                                <td class="flex space-x-4">
+                                    <a href="{{ route('libros.edit', $libro) }}"
+                                        class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">
+                                        <i class="fa-solid fa-pen"></i>
+                                        Editar
+                                    </a>
+                                    <form action="{{ route('libros.destroy', $libro) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">
+                                            <i class="fa-solid fa-trash"></i>
+                                            Borrar
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
